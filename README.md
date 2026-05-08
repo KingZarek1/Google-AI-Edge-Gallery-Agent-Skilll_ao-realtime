@@ -7,3 +7,6 @@ Idk what are agent skills lol
 ### Where to download
 
 here
+
+
+` Made by Google's Gemini AI (only code in Filez)`
