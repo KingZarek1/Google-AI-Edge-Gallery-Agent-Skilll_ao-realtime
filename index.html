@@ -11,128 +11,436 @@
             box-sizing: border-box;
         }
         
+        /* Animated gradient background */
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(-45deg, #0066ff, #0088ff, #5544ff, #7744ff, #aa44ff, #dd44dd);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
             min-height: 100vh;
             padding: 20px;
+            perspective: 1000px;
+            overflow-x: hidden;
         }
-        
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating animated background shapes */
+        .bg-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            filter: blur(40px);
+        }
+
+        .shape1 {
+            width: 200px;
+            height: 200px;
+            background: #00ffff;
+            border-radius: 50%;
+            top: 10%;
+            left: 10%;
+            animation: float1 20s infinite;
+        }
+
+        .shape2 {
+            width: 300px;
+            height: 300px;
+            background: #ff00ff;
+            border-radius: 50%;
+            top: 50%;
+            right: 10%;
+            animation: float2 25s infinite;
+        }
+
+        .shape3 {
+            width: 250px;
+            height: 250px;
+            background: #00ff88;
+            border-radius: 50%;
+            bottom: 10%;
+            left: 50%;
+            animation: float3 30s infinite;
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            25% { transform: translateY(-20px) translateX(20px); }
+            50% { transform: translateY(-40px) translateX(-20px); }
+            75% { transform: translateY(-20px) translateX(-40px); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            33% { transform: translateY(30px) translateX(-30px); }
+            66% { transform: translateY(-30px) translateX(30px); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-50px) rotate(180deg); }
+        }
+
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 100px rgba(85, 68, 255, 0.2);
+            padding: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: slideInUp 0.8s ease-out;
+            transform-style: preserve-3d;
         }
-        
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px) rotateX(10deg);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) rotateX(0deg);
+            }
+        }
+
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            color: #667eea;
+            font-size: 3em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #0066ff, #aa44ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite;
+            text-shadow: 0 0 20px rgba(85, 68, 255, 0.3);
         }
-        
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 20px rgba(85, 68, 255, 0.3), 0 0 40px rgba(85, 68, 255, 0.1); }
+            50% { text-shadow: 0 0 30px rgba(170, 68, 255, 0.5), 0 0 60px rgba(170, 68, 255, 0.2); }
+        }
+
         .intro {
-            color: #666;
+            color: #555;
             margin-bottom: 30px;
-            font-size: 1.1em;
+            font-size: 1.2em;
+            animation: fadeIn 1s ease-out 0.2s both;
         }
-        
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         hr {
             border: none;
-            border-top: 2px solid #ddd;
-            margin: 30px 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #5544ff, transparent);
+            margin: 40px 0;
+            opacity: 0.6;
         }
-        
+
         h3 {
-            font-size: 1.5em;
-            margin-top: 25px;
-            margin-bottom: 15px;
-            color: #333;
+            font-size: 1.8em;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            color: #5544ff;
+            animation: fadeIn 1s ease-out;
+            border-left: 5px solid #aa44ff;
+            padding-left: 15px;
         }
-        
+
         ul {
             margin-left: 20px;
+            animation: fadeIn 1s ease-out;
         }
-        
+
         li {
-            margin-bottom: 12px;
-            font-size: 1.05em;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            transition: transform 0.3s ease, color 0.3s ease;
         }
-        
+
+        li:hover {
+            transform: translateX(10px);
+            color: #5544ff;
+        }
+
         strong {
-            color: #667eea;
+            color: #5544ff;
+            font-weight: 600;
         }
-        
+
         a {
-            color: #667eea;
+            color: #5544ff;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
         }
-        
+
+        a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #5544ff, #aa44ff);
+            transition: width 0.3s ease;
+        }
+
         a:hover {
-            color: #764ba2;
-            text-decoration: underline;
+            color: #aa44ff;
         }
-        
+
+        a:hover::after {
+            width: 100%;
+        }
+
         .section-description {
-            color: #666;
+            color: #777;
             font-size: 0.95em;
             font-style: italic;
         }
-        
-        .footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 2px solid #ddd;
-            text-align: center;
-            color: #999;
-            font-size: 0.95em;
+
+        /* Sponsor Section */
+        .sponsors-section {
+            margin: 50px 0;
+            animation: fadeIn 1s ease-out;
         }
-        
+
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .sponsor-card {
+            background: linear-gradient(135deg, rgba(85, 68, 255, 0.1), rgba(170, 68, 255, 0.1));
+            border: 2px solid rgba(85, 68, 255, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transform: translateZ(0);
+        }
+
+        .sponsor-card:hover {
+            transform: translateY(-10px) scale(1.05) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(170, 68, 255, 0.3), 0 0 60px rgba(85, 68, 255, 0.2);
+            border-color: #aa44ff;
+            background: linear-gradient(135deg, rgba(85, 68, 255, 0.2), rgba(170, 68, 255, 0.2));
+        }
+
+        .sponsor-card h4 {
+            font-size: 1.5em;
+            color: #5544ff;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sponsor-card p {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .sponsor-card a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #5544ff, #aa44ff);
+            color: white;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .sponsor-card a:hover {
+            color: white;
+            box-shadow: 0 5px 20px rgba(170, 68, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        .sponsor-card a::after {
+            display: none;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(85, 68, 255, 0.3);
+            text-align: center;
+            color: #777;
+            font-size: 1em;
+            animation: fadeIn 1s ease-out;
+        }
+
         .footer strong {
-            color: #333;
+            color: #5544ff;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, rgba(85, 68, 255, 0.1), rgba(170, 68, 255, 0.1));
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border-left: 4px solid #aa44ff;
+        }
+
+        .contact-info a {
+            color: #5544ff;
+            font-weight: 600;
+        }
+
+        /* Pulse animation for contact email */
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(170, 68, 255, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(170, 68, 255, 0); }
+        }
+
+        .contact-info a {
+            animation: pulse 2s infinite;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* 3D rotating badges */
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #5544ff, #aa44ff);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 3px;
+            animation: rotateBadge 6s linear infinite;
+            perspective: 1000px;
+        }
+
+        @keyframes rotateBadge {
+            0%, 100% { transform: rotateY(0deg) rotateZ(0deg); }
+            50% { transform: rotateY(180deg) rotateZ(5deg); }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px;
+                max-width: 95%;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .sponsors-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h3 {
+                font-size: 1.5em;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
+    <div class="bg-shapes">
+        <div class="shape shape1"></div>
+        <div class="shape shape2"></div>
+        <div class="shape shape3"></div>
+    </div>
+
     <div class="container">
         <h1>🚀 HyperTech Inc. | AI Edge Gallery</h1>
-        <p class="intro">Welcome to the official project hub. This site organizes our AI Agent Skills and development tools.</p>
+        <p class="intro">Welcome to the official project hub. This site organizes our AI Agent Skills and development tools with cutting-edge innovation.</p>
         
         <hr>
         
         <h3>🤖 Public Projects (KingZarek1)</h3>
         <ul>
             <li>
-                <strong><a href="./ao-realtime/">AO Realtime Agent</a></strong>
+                <strong><a href="./ao-realtime/">AO Realtime Agent</a></strong> <span class="badge">AI Powered</span> <span class="badge">Real-Time</span>
                 <ul>
                     <li><em>Direct Files:</em> <a href="./Filez/script.js">JavaScript Script</a> | <a href="./Filez/SKILL.md">Skill Documentation</a></li>
                 </ul>
             </li>
             <li>
-                <strong><a href="https://github.com">Main Portfolio</a></strong>
+                <strong><a href="https://github.com">Main Portfolio</a></strong> <span class="badge">Open Source</span>
             </li>
         </ul>
         
         <h3>🛠️ Development & Private Tools (HyperTechInc)</h3>
         <ul>
             <li>
-                <strong><a href="https://qzz.io">Private Archive</a></strong>
+                <strong><a href="https://qzz.io">Private Archive</a></strong> <span class="badge">Enterprise</span>
                 <ul>
                     <li><span class="section-description">Access our more active development branch and experimental features.</span></li>
                 </ul>
             </li>
         </ul>
+
+        <hr>
+
+        <h3>💼 Our Trusted Sponsors & Partners</h3>
+        <p class="intro">We're proud to work with industry leaders who share our vision of innovation and excellence.</p>
         
+        <div class="sponsors-grid">
+            <div class="sponsor-card">
+                <h4>🔴 Xiaomi</h4>
+                <p>Xiaomi brings cutting-edge technology to the world with innovative hardware and intelligent devices. Their commitment to affordability and quality makes advanced technology accessible to everyone. We're grateful for their partnership in creating smarter solutions.</p>
+                <a href="https://mi.com" target="_blank">Visit Xiaomi →</a>
+            </div>
+
+            <div class="sponsor-card">
+                <h4>🪟 Microsoft</h4>
+                <p>Microsoft is a global technology powerhouse pioneering cloud computing, AI, and enterprise solutions. Their Azure platform and development tools are instrumental in building robust, scalable applications. Their innovation fuels our projects forward.</p>
+                <a href="https://microsoft.com" target="_blank">Visit Microsoft →</a>
+            </div>
+
+            <div class="sponsor-card">
+                <h4>✨ Google Gemini</h4>
+                <p>Google Gemini represents the frontier of AI technology with advanced multimodal capabilities and intelligent reasoning. Its powerful language understanding and problem-solving abilities are incredibly helpful for creating sophisticated AI solutions. A game-changer for the industry.</p>
+                <a href="https://gemini.google.com" target="_blank">Visit Gemini →</a>
+            </div>
+        </div>
+
         <hr>
         
         <div class="footer">
-            © 2026 <strong>HyperTech Inc.</strong> | <a href="https://github.com">Contact Support</a>
+            © 2026 <strong>HyperTech Inc.</strong> | All Rights Reserved
+            <div class="contact-info">
+                📧 For inquiries, reach out to us: <a href="mailto:real.hypertechinc@gmail.com">real.hypertechinc@gmail.com</a>
+            </div>
         </div>
     </div>
 </body>
