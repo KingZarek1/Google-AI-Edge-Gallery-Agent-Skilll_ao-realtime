@@ -11,4 +11,4 @@ here
 
 ` Made by Google's Gemini AI (only code in Filez)`
 
-*To acctually do something, go to:* ***./Filez/index.md***
+*To acctually do something, go to:* ***https://*/Filez/index.md***
