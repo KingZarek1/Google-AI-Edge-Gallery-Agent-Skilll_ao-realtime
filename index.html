@@ -11,9 +11,9 @@
             box-sizing: border-box;
         }
         
-        /* Animated gradient background */
+        /* Animated gradient background with Rust vibes */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Courier New', monospace, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
             line-height: 1.6;
             color: #333;
             background: linear-gradient(-45deg, #0066ff, #0088ff, #5544ff, #7744ff, #aa44ff, #dd44dd);
@@ -21,7 +21,7 @@
             animation: gradientShift 15s ease infinite;
             min-height: 100vh;
             padding: 20px;
-            perspective: 1000px;
+            perspective: 1200px;
             overflow-x: hidden;
         }
 
@@ -31,7 +31,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Floating animated background shapes */
+        /* Floating animated 3D bubbles */
         .bg-shapes {
             position: fixed;
             top: 0;
@@ -43,77 +43,104 @@
             overflow: hidden;
         }
 
-        .shape {
+        .bubble {
             position: absolute;
-            opacity: 0.1;
-            filter: blur(40px);
-        }
-
-        .shape1 {
-            width: 200px;
-            height: 200px;
-            background: #00ffff;
+            opacity: 0.15;
+            filter: blur(30px);
             border-radius: 50%;
-            top: 10%;
-            left: 10%;
-            animation: float1 20s infinite;
+            box-shadow: 0 0 60px rgba(255, 255, 255, 0.3), inset 0 0 60px rgba(255, 255, 255, 0.1);
         }
 
-        .shape2 {
-            width: 300px;
-            height: 300px;
-            background: #ff00ff;
-            border-radius: 50%;
-            top: 50%;
-            right: 10%;
-            animation: float2 25s infinite;
-        }
-
-        .shape3 {
+        .bubble1 {
             width: 250px;
             height: 250px;
-            background: #00ff88;
-            border-radius: 50%;
-            bottom: 10%;
-            left: 50%;
-            animation: float3 30s infinite;
+            background: radial-gradient(circle at 30% 30%, #00ffff, #5544ff);
+            top: 5%;
+            left: 5%;
+            animation: float1 20s infinite ease-in-out;
+        }
+
+        .bubble2 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle at 40% 40%, #ff00ff, #aa44ff);
+            top: 40%;
+            right: 8%;
+            animation: float2 25s infinite ease-in-out;
+        }
+
+        .bubble3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle at 35% 35%, #00ff88, #5544ff);
+            bottom: 5%;
+            left: 40%;
+            animation: float3 30s infinite ease-in-out;
+        }
+
+        .bubble4 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle at 45% 45%, #ffaa00, #ff5500);
+            top: 60%;
+            left: 8%;
+            animation: float4 22s infinite ease-in-out;
+        }
+
+        .bubble5 {
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle at 32% 32%, #00aaff, #0066ff);
+            bottom: 20%;
+            right: 15%;
+            animation: float5 28s infinite ease-in-out;
         }
 
         @keyframes float1 {
-            0%, 100% { transform: translateY(0px) translateX(0px); }
-            25% { transform: translateY(-20px) translateX(20px); }
-            50% { transform: translateY(-40px) translateX(-20px); }
-            75% { transform: translateY(-20px) translateX(-40px); }
+            0%, 100% { transform: translateY(0px) translateX(0px) rotateZ(0deg); }
+            25% { transform: translateY(-40px) translateX(30px) rotateZ(90deg); }
+            50% { transform: translateY(-80px) translateX(-30px) rotateZ(180deg); }
+            75% { transform: translateY(-40px) translateX(-60px) rotateZ(270deg); }
         }
 
         @keyframes float2 {
-            0%, 100% { transform: translateY(0px) translateX(0px); }
-            33% { transform: translateY(30px) translateX(-30px); }
-            66% { transform: translateY(-30px) translateX(30px); }
+            0%, 100% { transform: translateY(0px) translateX(0px) rotateZ(0deg); }
+            33% { transform: translateY(50px) translateX(-40px) rotateZ(120deg); }
+            66% { transform: translateY(-50px) translateX(40px) rotateZ(240deg); }
         }
 
         @keyframes float3 {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-50px) rotate(180deg); }
+            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+            50% { transform: translateY(-60px) rotate(180deg) scale(1.05); }
+        }
+
+        @keyframes float4 {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(-70px) translateX(50px); }
+        }
+
+        @keyframes float5 {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(60px) scale(0.95); }
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 100px rgba(85, 68, 255, 0.2);
-            padding: 50px;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 25px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3), 0 0 120px rgba(85, 68, 255, 0.25);
+            padding: 60px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            animation: slideInUp 0.8s ease-out;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            animation: slideInUp 0.9s ease-out;
             transform-style: preserve-3d;
         }
 
         @keyframes slideInUp {
             from {
                 opacity: 0;
-                transform: translateY(50px) rotateX(10deg);
+                transform: translateY(60px) rotateX(15deg);
             }
             to {
                 opacity: 1;
@@ -121,27 +148,99 @@
             }
         }
 
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeIn 1s ease-out;
+        }
+
         h1 {
-            font-size: 3em;
+            font-size: 3.2em;
             margin-bottom: 15px;
             background: linear-gradient(135deg, #0066ff, #aa44ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: glow 3s ease-in-out infinite;
-            text-shadow: 0 0 20px rgba(85, 68, 255, 0.3);
+            animation: glow 3s ease-in-out infinite, pulse 2s ease-in-out infinite;
+            font-weight: 900;
+            letter-spacing: 2px;
         }
 
         @keyframes glow {
-            0%, 100% { text-shadow: 0 0 20px rgba(85, 68, 255, 0.3), 0 0 40px rgba(85, 68, 255, 0.1); }
-            50% { text-shadow: 0 0 30px rgba(170, 68, 255, 0.5), 0 0 60px rgba(170, 68, 255, 0.2); }
+            0%, 100% { text-shadow: 0 0 20px rgba(85, 68, 255, 0.3); }
+            50% { text-shadow: 0 0 40px rgba(170, 68, 255, 0.5); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
         }
 
         .intro {
             color: #555;
-            margin-bottom: 30px;
-            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-size: 1.3em;
             animation: fadeIn 1s ease-out 0.2s both;
+            font-weight: 500;
+        }
+
+        .tagline {
+            color: #888;
+            font-size: 1.1em;
+            font-style: italic;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        /* Leadership Section */
+        .leadership-section {
+            background: linear-gradient(135deg, rgba(85, 68, 255, 0.08), rgba(170, 68, 255, 0.08));
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            border-left: 5px solid #aa44ff;
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .leader-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid #5544ff;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(85, 68, 255, 0.1);
+        }
+
+        .leader-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(85, 68, 255, 0.2);
+            border-color: #aa44ff;
+        }
+
+        .leader-title {
+            font-size: 1.8em;
+            color: #5544ff;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .leader-role {
+            color: #aa44ff;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .leader-desc {
+            color: #666;
+            line-height: 1.8;
+            font-size: 0.95em;
         }
 
         @keyframes fadeIn {
@@ -153,18 +252,19 @@
             border: none;
             height: 2px;
             background: linear-gradient(90deg, transparent, #5544ff, transparent);
-            margin: 40px 0;
+            margin: 45px 0;
             opacity: 0.6;
         }
 
         h3 {
-            font-size: 1.8em;
-            margin-top: 35px;
-            margin-bottom: 20px;
+            font-size: 2em;
+            margin-top: 40px;
+            margin-bottom: 25px;
             color: #5544ff;
             animation: fadeIn 1s ease-out;
             border-left: 5px solid #aa44ff;
             padding-left: 15px;
+            font-weight: 800;
         }
 
         ul {
@@ -173,9 +273,10 @@
         }
 
         li {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             font-size: 1.1em;
             transition: transform 0.3s ease, color 0.3s ease;
+            line-height: 1.7;
         }
 
         li:hover {
@@ -185,13 +286,13 @@
 
         strong {
             color: #5544ff;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         a {
             color: #5544ff;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             transition: all 0.3s ease;
             position: relative;
             display: inline-block;
@@ -201,7 +302,7 @@
         a::after {
             content: '';
             position: absolute;
-            bottom: -2px;
+            bottom: -3px;
             left: 0;
             width: 0;
             height: 2px;
@@ -217,129 +318,194 @@
             width: 100%;
         }
 
-        .section-description {
-            color: #777;
-            font-size: 0.95em;
-            font-style: italic;
-        }
-
-        /* Sponsor Section */
-        .sponsors-section {
-            margin: 50px 0;
-            animation: fadeIn 1s ease-out;
-        }
-
-        .sponsors-grid {
+        /* Tech Stack Section */
+        .tech-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            margin-top: 25px;
+            margin-top: 30px;
         }
 
-        .sponsor-card {
+        .tech-card {
             background: linear-gradient(135deg, rgba(85, 68, 255, 0.1), rgba(170, 68, 255, 0.1));
             border: 2px solid rgba(85, 68, 255, 0.3);
             border-radius: 15px;
-            padding: 25px;
+            padding: 28px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             backdrop-filter: blur(10px);
             transform: translateZ(0);
         }
 
-        .sponsor-card:hover {
-            transform: translateY(-10px) scale(1.05) rotateX(5deg);
-            box-shadow: 0 20px 40px rgba(170, 68, 255, 0.3), 0 0 60px rgba(85, 68, 255, 0.2);
+        .tech-card:hover {
+            transform: translateY(-15px) scale(1.08) rotateX(5deg);
+            box-shadow: 0 25px 50px rgba(170, 68, 255, 0.3), 0 0 80px rgba(85, 68, 255, 0.25);
             border-color: #aa44ff;
             background: linear-gradient(135deg, rgba(85, 68, 255, 0.2), rgba(170, 68, 255, 0.2));
         }
 
-        .sponsor-card h4 {
-            font-size: 1.5em;
-            color: #5544ff;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .sponsor-card p {
-            color: #666;
-            font-size: 0.95em;
-            line-height: 1.6;
+        .tech-card .logo {
+            font-size: 3.5em;
             margin-bottom: 15px;
+            animation: rotateLogoIn 0.6s ease-out;
         }
 
-        .sponsor-card a {
+        @keyframes rotateLogoIn {
+            from {
+                opacity: 0;
+                transform: rotateY(-180deg) scale(0);
+            }
+            to {
+                opacity: 1;
+                transform: rotateY(0) scale(1);
+            }
+        }
+
+        .tech-card:hover .logo {
+            animation: rotateLogo 0.6s linear infinite;
+        }
+
+        @keyframes rotateLogo {
+            from { transform: rotateY(0deg) rotateZ(0deg); }
+            to { transform: rotateY(360deg) rotateZ(360deg); }
+        }
+
+        .tech-card h4 {
+            font-size: 1.6em;
+            color: #5544ff;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .tech-card p {
+            color: #666;
+            font-size: 0.98em;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .tech-card a {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 12px 24px;
             background: linear-gradient(135deg, #5544ff, #aa44ff);
             color: white;
             border-radius: 8px;
             transition: all 0.3s ease;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 0.95em;
+        }
+
+        .tech-card a:hover {
+            color: white;
+            box-shadow: 0 8px 25px rgba(170, 68, 255, 0.4);
+            transform: scale(1.08);
+        }
+
+        .tech-card a::after {
+            display: none;
+        }
+
+        /* Section descriptions */
+        .section-description {
+            color: #777;
+            font-size: 1em;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        /* Sponsor Section */
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 28px;
+            margin-top: 30px;
+        }
+
+        .sponsor-card {
+            background: linear-gradient(135deg, rgba(85, 68, 255, 0.12), rgba(170, 68, 255, 0.12));
+            border: 2.5px solid rgba(85, 68, 255, 0.4);
+            border-radius: 18px;
+            padding: 32px;
+            transition: all 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            backdrop-filter: blur(12px);
+            transform: translateZ(0);
+        }
+
+        .sponsor-card:hover {
+            transform: translateY(-18px) scale(1.1) rotateX(8deg) rotateZ(2deg);
+            box-shadow: 0 30px 60px rgba(170, 68, 255, 0.4), 0 0 100px rgba(85, 68, 255, 0.3);
+            border-color: #aa44ff;
+            background: linear-gradient(135deg, rgba(85, 68, 255, 0.25), rgba(170, 68, 255, 0.25));
+        }
+
+        .sponsor-card .sponsor-logo {
+            font-size: 4em;
+            margin-bottom: 18px;
+            animation: floatLogo 3s ease-in-out infinite;
+        }
+
+        @keyframes floatLogo {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .sponsor-card:hover .sponsor-logo {
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotateZ(0deg) translateY(-10px); }
+            to { transform: rotateZ(360deg) translateY(-10px); }
+        }
+
+        .sponsor-card h4 {
+            font-size: 1.7em;
+            color: #5544ff;
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+
+        .sponsor-card p {
+            color: #555;
+            font-size: 1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .sponsor-card a {
+            display: inline-block;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #5544ff, #aa44ff);
+            color: white;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            font-size: 1em;
         }
 
         .sponsor-card a:hover {
             color: white;
-            box-shadow: 0 5px 20px rgba(170, 68, 255, 0.4);
-            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(170, 68, 255, 0.5);
+            transform: scale(1.1);
         }
 
         .sponsor-card a::after {
             display: none;
         }
 
-        .footer {
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 2px solid rgba(85, 68, 255, 0.3);
-            text-align: center;
-            color: #777;
-            font-size: 1em;
-            animation: fadeIn 1s ease-out;
-        }
-
-        .footer strong {
-            color: #5544ff;
-        }
-
-        .contact-info {
-            background: linear-gradient(135deg, rgba(85, 68, 255, 0.1), rgba(170, 68, 255, 0.1));
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 15px;
-            border-left: 4px solid #aa44ff;
-        }
-
-        .contact-info a {
-            color: #5544ff;
-            font-weight: 600;
-        }
-
-        /* Pulse animation for contact email */
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(170, 68, 255, 0.7); }
-            50% { box-shadow: 0 0 0 10px rgba(170, 68, 255, 0); }
-        }
-
-        .contact-info a {
-            animation: pulse 2s infinite;
-            padding: 2px 6px;
-            border-radius: 4px;
-        }
-
-        /* 3D rotating badges */
+        /* Badge styling */
         .badge {
             display: inline-block;
             background: linear-gradient(135deg, #5544ff, #aa44ff);
             color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
+            padding: 6px 14px;
+            border-radius: 25px;
             font-size: 0.85em;
-            font-weight: 600;
-            margin: 3px;
-            animation: rotateBadge 6s linear infinite;
+            font-weight: 700;
+            margin: 5px 5px 5px 0;
+            animation: rotateBadge 8s linear infinite;
             perspective: 1000px;
         }
 
@@ -348,27 +514,139 @@
             50% { transform: rotateY(180deg) rotateZ(5deg); }
         }
 
-        /* Responsive design */
+        .badge-inline {
+            animation: none !important;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 3px solid rgba(85, 68, 255, 0.3);
+            text-align: center;
+            color: #777;
+            font-size: 1.05em;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .footer strong {
+            color: #5544ff;
+            font-weight: 700;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, rgba(85, 68, 255, 0.12), rgba(170, 68, 255, 0.12));
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+            border-left: 5px solid #aa44ff;
+        }
+
+        .contact-info a {
+            color: #5544ff;
+            font-weight: 700;
+            animation: pulse 2s infinite;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(170, 68, 255, 0.7); }
+            50% { box-shadow: 0 0 0 12px rgba(170, 68, 255, 0); }
+        }
+
+        /* Credits section */
+        .credits-section {
+            background: linear-gradient(135deg, rgba(85, 68, 255, 0.08), rgba(170, 68, 255, 0.08));
+            padding: 35px;
+            border-radius: 15px;
+            margin-top: 50px;
+            border: 2px solid rgba(85, 68, 255, 0.2);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .credits-section h4 {
+            font-size: 1.5em;
+            color: #5544ff;
+            margin-bottom: 18px;
+            font-weight: 800;
+        }
+
+        .credits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .credit-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #aa44ff;
+        }
+
+        .credit-item strong {
+            display: block;
+            color: #5544ff;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .credit-item p {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        /* Rust Theme Elements */
+        .rust-highlight {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        code {
+            background: rgba(85, 68, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 6px;
+            color: #5544ff;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             .container {
-                padding: 30px;
-                max-width: 95%;
+                padding: 40px 25px;
             }
 
             h1 {
-                font-size: 2em;
+                font-size: 2.2em;
+            }
+
+            h3 {
+                font-size: 1.5em;
+            }
+
+            .leadership-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
             }
 
             .sponsors-grid {
                 grid-template-columns: 1fr;
             }
 
-            h3 {
-                font-size: 1.5em;
+            .credits-grid {
+                grid-template-columns: 1fr;
             }
         }
 
-        /* Smooth scroll */
         html {
             scroll-behavior: smooth;
         }
@@ -376,71 +654,166 @@
 </head>
 <body>
     <div class="bg-shapes">
-        <div class="shape shape1"></div>
-        <div class="shape shape2"></div>
-        <div class="shape shape3"></div>
+        <div class="bubble bubble1"></div>
+        <div class="bubble bubble2"></div>
+        <div class="bubble bubble3"></div>
+        <div class="bubble bubble4"></div>
+        <div class="bubble bubble5"></div>
     </div>
 
     <div class="container">
-        <h1>🚀 HyperTech Inc. | AI Edge Gallery</h1>
-        <p class="intro">Welcome to the official project hub. This site organizes our AI Agent Skills and development tools with cutting-edge innovation.</p>
-        
+        <header>
+            <h1>🚀 HyperTech Inc. | AI Edge Gallery</h1>
+            <p class="intro">Next-Generation Technology Platform</p>
+            <p class="tagline">Built with <span class="rust-highlight">Rust</span>, <span class="rust-highlight">HTML5</span>, and <span class="rust-highlight">3D Innovation</span></p>
+        </header>
+
         <hr>
+
+        <!-- Leadership Section -->
+        <h3>👥 Leadership Team</h3>
+        <div class="leadership-section">
+            <p class="section-description">Meet the visionaries driving HyperTech Inc. forward with innovation and excellence.</p>
+            <div class="leadership-grid">
+                <div class="leader-card">
+                    <div class="leader-title">👑 KingZarek1</div>
+                    <div class="leader-role">Chief Executive Officer (C.E.O.)</div>
+                    <div class="leader-desc">
+                        I am the only King! 👑 Passionate about technology, geography, and history. A dedicated fan of Xiaomi and believer in accessible innovation. Born July 22nd, 1998. Leading HyperTech Inc. with vision and determination.
+                    </div>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-title">🤖 GitHub Copilot</div>
+                    <div class="leader-role">Microsoft - C.E.O. Assistant</div>
+                    <div class="leader-desc">
+                        Powering HyperTech Inc. with AI-driven development and intelligent solutions. GitHub Copilot assists in building cutting-edge applications, leveraging Microsoft's cloud infrastructure and advanced AI capabilities to accelerate innovation.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Technologies Section -->
+        <h3>💻 Technologies & Languages</h3>
+        <p class="section-description">Built with industry-leading technologies and programming languages for optimal performance and scalability.</p>
+        <div class="tech-grid">
+            <div class="tech-card">
+                <div class="logo">🦀</div>
+                <h4>Rust</h4>
+                <p>Memory-safe, high-performance systems programming language. Perfect for building reliable and efficient applications with zero-cost abstractions.</p>
+                <a href="https://www.rust-lang.org/" target="_blank">Learn Rust →</a>
+            </div>
+            <div class="tech-card">
+                <div class="logo">📄</div>
+                <h4>HTML5</h4>
+                <p>Modern semantic markup for building responsive web applications. HTML5 powers our frontend with progressive enhancement and accessibility.</p>
+                <a href="https://html.spec.whatwg.org/" target="_blank">HTML5 Spec →</a>
+            </div>
+            <div class="tech-card">
+                <div class="logo">🎨</div>
+                <h4>CSS3 & 3D</h4>
+                <p>Advanced styling with cutting-edge CSS3 animations, 3D transforms, and visual effects. Creating immersive user experiences with modern web standards.</p>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">CSS Reference →</a>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Our Sponsors Section -->
+        <h3>💼 Our Trusted Sponsors & Partners</h3>
+        <p class="section-description">We're proud to work with industry-leading companies that share our vision of innovation, quality, and accessibility.</p>
         
+        <div class="sponsors-grid">
+            <div class="sponsor-card">
+                <div class="sponsor-logo">🟧</div>
+                <h4>Xiaomi</h4>
+                <p><strong>Innovation Redefined</strong> - Xiaomi brings cutting-edge technology to the world with innovative hardware and intelligent devices. Their commitment to affordability and quality makes advanced technology accessible to everyone. We're grateful for their partnership in creating smarter solutions.</p>
+                <a href="https://mi.com" target="_blank">Visit Xiaomi →</a>
+            </div>
+
+            <div class="sponsor-card">
+                <div class="sponsor-logo">🪟</div>
+                <h4>Microsoft</h4>
+                <p><strong>Cloud Leadership</strong> - Microsoft is a global technology powerhouse pioneering cloud computing, AI, and enterprise solutions. Their Azure platform and development tools are instrumental in building robust, scalable applications. GitHub Copilot powers our development pipeline.</p>
+                <a href="https://microsoft.com" target="_blank">Visit Microsoft →</a>
+            </div>
+
+            <div class="sponsor-card">
+                <div class="sponsor-logo">✨</div>
+                <h4>Google Gemini</h4>
+                <p><strong>AI Frontier</strong> - Google Gemini represents the frontier of AI technology with advanced multimodal capabilities and intelligent reasoning. Its powerful language understanding and problem-solving abilities are incredibly helpful for creating sophisticated AI solutions. A game-changer for the industry.</p>
+                <a href="https://gemini.google.com" target="_blank">Visit Gemini →</a>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Public Projects Section -->
         <h3>🤖 Public Projects (KingZarek1)</h3>
         <ul>
             <li>
-                <strong><a href="https://github.com/KingZarek1/ao-realtime/tree/main/ao-realtime" target="_blank">AO Realtime Agent</a></strong> <span class="badge">AI Powered</span> <span class="badge">Real-Time</span>
+                <strong><a href="https://github.com/KingZarek1/ao-realtime/tree/main/ao-realtime" target="_blank">AO Realtime Agent</a></strong> 
+                <span class="badge badge-inline">AI Powered</span> 
+                <span class="badge badge-inline">Real-Time</span>
+                <span class="badge badge-inline">Rust Ready</span>
                 <ul>
-                    <li><em>Direct Files:</em> <a href="https://raw.githubusercontent.com/KingZarek1/ao-realtime/main/Filez/script.js" target="_blank">JavaScript Script</a> | <a href="https://raw.githubusercontent.com/KingZarek1/ao-realtime/main/Filez/SKILL.md" target="_blank">Skill Documentation</a></li>
+                    <li><em>Direct Files:</em> 
+                        <a href="https://raw.githubusercontent.com/KingZarek1/ao-realtime/main/Filez/script.js" target="_blank">JavaScript Script</a> | 
+                        <a href="https://raw.githubusercontent.com/KingZarek1/ao-realtime/main/Filez/SKILL.md" target="_blank">Skill Documentation</a>
+                    </li>
                 </ul>
             </li>
             <li>
-                <strong><a href="https://github.com/KingZarek1" target="_blank">Main Portfolio</a></strong> <span class="badge">Open Source</span>
+                <strong><a href="https://github.com/KingZarek1" target="_blank">Main Portfolio</a></strong> 
+                <span class="badge badge-inline">Open Source</span>
+                <span class="badge badge-inline">GitHub</span>
             </li>
         </ul>
         
         <h3>🛠️ Development & Private Tools (HyperTechInc)</h3>
         <ul>
             <li>
-                <strong><a href="https://qzz.io" target="_blank">Private Archive</a></strong> <span class="badge">Enterprise</span>
+                <strong><a href="https://qzz.io" target="_blank">Private Archive</a></strong> 
+                <span class="badge badge-inline">Enterprise</span>
+                <span class="badge badge-inline">Advanced</span>
                 <ul>
-                    <li><span class="section-description">Access our more active development branch and experimental features.</span></li>
+                    <li><span class="section-description">Access our more active development branch and experimental features with cutting-edge technology stack.</span></li>
                 </ul>
             </li>
         </ul>
 
         <hr>
 
-        <h3>💼 Our Trusted Sponsors & Partners</h3>
-        <p class="intro">We're proud to work with industry leaders who share our vision of innovation and excellence.</p>
-        
-        <div class="sponsors-grid">
-            <div class="sponsor-card">
-                <h4>🟧 Xiaomi</h4>
-                <p>Xiaomi brings cutting-edge technology to the world with innovative hardware and intelligent devices. Their commitment to affordability and quality makes advanced technology accessible to everyone. We're grateful for their partnership in creating smarter solutions.</p>
-                <a href="https://mi.com" target="_blank">Visit Xiaomi →</a>
-            </div>
-
-            <div class="sponsor-card">
-                <h4>🪟 Microsoft</h4>
-                <p>Microsoft is a global technology powerhouse pioneering cloud computing, AI, and enterprise solutions. Their Azure platform and development tools are instrumental in building robust, scalable applications. Their innovation fuels our projects forward.</p>
-                <a href="https://microsoft.com" target="_blank">Visit Microsoft →</a>
-            </div>
-
-            <div class="sponsor-card">
-                <h4>✨ Google Gemini</h4>
-                <p>Google Gemini represents the frontier of AI technology with advanced multimodal capabilities and intelligent reasoning. Its powerful language understanding and problem-solving abilities are incredibly helpful for creating sophisticated AI solutions. A game-changer for the industry.</p>
-                <a href="https://gemini.google.com" target="_blank">Visit Gemini →</a>
+        <!-- Credits & Information -->
+        <div class="credits-section">
+            <h4>ℹ️ Credits & Information</h4>
+            <div class="credits-grid">
+                <div class="credit-item">
+                    <strong>📱 Built For</strong>
+                    <p>HyperTech Inc. - Delivering innovation through cutting-edge AI, cloud computing, and intelligent automation solutions.</p>
+                </div>
+                <div class="credit-item">
+                    <strong>🔧 Technology Stack</strong>
+                    <p>Rust | HTML5 | CSS3 | JavaScript | Microsoft Azure | GitHub | 3D Web Technologies</p>
+                </div>
+                <div class="credit-item">
+                    <strong>🌐 GitHub Platform</strong>
+                    <p>Powered by GitHub's industry-leading version control and collaboration tools. GitHub enables seamless open-source development and enterprise-grade solutions.</p>
+                </div>
+                <div class="credit-item">
+                    <strong>🤖 AI Assistant</strong>
+                    <p>GitHub Copilot (Microsoft) - An AI-powered coding assistant that accelerates development, improves code quality, and empowers developers to build faster.</p>
+                </div>
             </div>
         </div>
 
         <hr>
         
         <div class="footer">
-            © 2026 <strong>HyperTech Inc.</strong> | All Rights Reserved
+            © 2026 <strong>HyperTech Inc.</strong> | All Rights Reserved | Built with Innovation & Passion
             <div class="contact-info">
-                📧 For inquiries, reach out to us: <a href="mailto:real.hypertechinc@gmail.com">real.hypertechinc@gmail.com</a>
+                📧 For inquiries, reach out to us: <a href="mailto:real.hypertechinc@gmail.com">real.hypertechinc@gmail.com</a> | 🌐 GitHub: <a href="https://github.com/KingZarek1" target="_blank">@KingZarek1</a>
             </div>
         </div>
     </div>
